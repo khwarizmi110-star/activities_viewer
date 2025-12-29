@@ -212,7 +212,7 @@ function App() {
                         </button>
                     </div>
                     <div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-                        <img style={{ maxWidth: '400px', height: 'auto' }} src="./src/assets/Sultan-Logo-PNG.png" alt="logo" />
+                        <img style={{ maxWidth: '400px', height: 'auto' }} src="/assets/Sultan-Logo-PNG.png" alt="logo" />
                     </div>
                 </header>
 
@@ -332,7 +332,7 @@ function App() {
                 <div className="print-report-header">
                     <div className="report-title-section">
                         <div style={{ display: 'inline-block', width: '100%', alignItems: 'center', gap: '1rem' }}>
-                            <img style={{ maxWidth: '300px', height: 'auto' }} src="./src/assets/Sultan-Logo-PNG.png" alt="logo" />
+                            <img style={{ maxWidth: '300px', height: 'auto' }} src="/assets/Sultan-Logo-PNG.png" alt="logo" />
                         </div>
                         <h1>{t.reportTitle}</h1>
                         <p className="report-subtitle">{t.activitySelectionReport}</p>
