@@ -70,7 +70,7 @@ function App() {
     const selectedIdsSet = useMemo(() => new Set(selectedIdsArray), [selectedIdsArray]);
 
     useEffect(() => {
-        fetch('uploads/151_new_29_dec_custom.json')
+        fetch('/uploads/151_new_29_dec_custom.json')
             .then(res => res.json())
             .then(data => {
                 const mappedData = data.map(item => ({
