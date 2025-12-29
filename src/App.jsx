@@ -65,13 +65,13 @@ function App() {
 
     const t = translations[language] || translations.en;
     const isRtl = language === 'ar';
-
+    const fil = "uploads/151_new_29_dec_custom.json";
     // For optimized checks, we can create a Set locally from the Redux array
     const selectedIdsSet = useMemo(() => new Set(selectedIdsArray), [selectedIdsArray]);
 
     useEffect(() => {
       
-        fetch('/activities_viewer/uploads/151_new_29_dec_custom.json')
+        fetch(fil)
             .then(res => res.json())
             .then(data => {
                 const mappedData = data.map(item => ({
