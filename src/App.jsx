@@ -216,12 +216,12 @@ function App() {
                     </div>
                 </header>
 
-                <h1 style={{ textAlign: 'center', marginTop: '1rem', fontFamily: isRtl ? 'IBM Plex Sans Arabic' : 'inherit', marginBottom: '1rem' }}>
+                <h1 style={{ textAlign: 'center', marginTop: '1rem', fontFamily: isRtl ? 'IBM Plex Sans Arabic' : 'inherit', marginBottom: '1rem', fontSize: 'clamp(1.5rem, 5vw, 2.5rem)' }}>
                     {t.title}
                 </h1>
 
-                <div className="card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
-                    <div className="search-bar" style={{ flex: 1 }}>
+                <div className="card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+                    <div className="search-bar" style={{ flex: '1 1 300px' }}>
                         <div style={{ position: 'relative' }}>
                             <Search size={20} style={{ position: 'absolute', [isRtl ? 'right' : 'left']: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
                             <input
@@ -229,14 +229,16 @@ function App() {
                                 placeholder={t.searchPlaceholder}
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                style={{ [isRtl ? 'paddingRight' : 'paddingLeft']: '40px' }}
+                                style={{ [isRtl ? 'paddingRight' : 'paddingLeft']: '40px', width: '100%' }}
                             />
                         </div>
                     </div>
 
-                    <button onClick={handlePrint} style={{ whiteSpace: 'nowrap' }}>
-                        <Printer size={18} style={{ [isRtl ? 'marginLeft' : 'marginRight']: '8px' }} />
-                        {t.printButton} ({selectedIdsArray.length})
+                    <button onClick={handlePrint} style={{ whiteSpace: 'nowrap', width: '100%', maxWidth: 'none' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Printer size={18} style={{ [isRtl ? 'marginLeft' : 'marginRight']: '8px' }} />
+                            {t.printButton} ({selectedIdsArray.length})
+                        </div>
                     </button>
                 </div>
 
@@ -271,21 +273,21 @@ function App() {
                                             onChange={() => handleSelect(activity.activityId)}
                                         />
                                     </td>
-                                    <td>{activity.activityId}</td>
-                                    <td>{activity.description}</td>
-                                    <td style={{ direction: 'ltr', textAlign: 'left' }}>{activity.description_EN || '-'}</td>
-                                    <td>
+                                    <td data-label={t.activityId}>{activity.activityId}</td>
+                                    <td data-label={t.descriptionAr}>{activity.description}</td>
+                                    <td data-label={t.descriptionEn} style={{ direction: 'ltr', textAlign: isRtl ? 'right' : 'left' }}>{activity.description_EN || '-'}</td>
+                                    <td data-label={t.classification}>
                                         <span className={`badge ${activity.classification === 'Allowed' ? 'badge-allowed' : 'badge-restricted'}`}>
                                             {activity.classification}
                                         </span>
                                     </td>
-                                    <td>{activity.saudis_percentage}</td>
+                                    <td data-label={t.saudisPercentage}>{activity.saudis_percentage}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
 
-                    <div className="pagination" style={{ marginTop: '1.5rem', borderTop: '1px solid var(--border)', paddingTop: '1.5rem' }}>
+                    <div className="pagination" style={{ marginTop: '1.5rem', borderTop: '1px solid var(--border)', paddingTop: '1.5rem', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}>
                         <button
                             className="secondary icon-btn"
                             onClick={() => {
@@ -293,10 +295,11 @@ function App() {
                                 window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
                             disabled={currentPage === 1}
+                            style={{ order: isRtl ? 3 : 1 }}
                         >
                             {t.prevButton}
                         </button>
-                        <div className="page-numbers">
+                        <div className="page-numbers" style={{ order: 2 }}>
                             {getPageNumbers().map((number, index) => (
                                 <button
                                     key={index}
@@ -320,6 +323,7 @@ function App() {
                                 window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
                             disabled={currentPage === totalPages || totalPages === 0}
+                            style={{ order: isRtl ? 1 : 3 }}
                         >
                             {t.nextButton}
                         </button>
