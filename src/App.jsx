@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Search, Printer, ArrowUpDown, ChevronDown, ChevronUp } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useSelector, useDispatch } from 'react-redux';
+import { Analytics } from '@vercel/analytics/react';
 import { toggleActivitySelection, setActivitySelection, clearActivitySelection, setLanguage } from './store/selectionSlice';
 
 const translations = {
@@ -532,6 +533,7 @@ function App() {
           }
         }
       `}</style>
+            <Analytics />
         </div>
     );
 }
