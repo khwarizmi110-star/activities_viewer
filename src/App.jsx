@@ -70,7 +70,6 @@ function App() {
     const selectedIdsSet = useMemo(() => new Set(selectedIdsArray), [selectedIdsArray]);
 
     useEffect(() => {
-      
         fetch(fil)
             .then(res => res.json())
             .then(data => {
