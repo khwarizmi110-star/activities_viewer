@@ -3,7 +3,7 @@ import { Search, Printer, ArrowUpDown, ChevronDown, ChevronUp } from 'lucide-rea
 import toast, { Toaster } from 'react-hot-toast';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleActivitySelection, setActivitySelection, clearActivitySelection, setLanguage } from './store/selectionSlice';
-// import { Analytics } from "@vercel/analytics/next"
+
 
 const translations = {
     en: {
