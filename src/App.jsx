@@ -243,49 +243,58 @@ function App() {
                 </div>
 
                 <div className="card">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th className="checkbox-cell">
-                                    <input
-                                        type="checkbox"
-                                        onChange={handleSelectAll}
-                                        checked={selectedIdsArray.length === filteredActivities.length && filteredActivities.length > 0}
-                                    />
-                                </th>
-                                <th onClick={() => requestSort('activityId')}>
-                                    {t.activityId}
-                                    {sortConfig.key === 'activityId' ? (sortConfig.direction === 'asc' ? <ChevronUp size={14} /> : <ChevronDown size={14} />) : <ArrowUpDown size={14} />}
-                                </th>
-                                <th onClick={() => requestSort('description')}>{t.descriptionAr}</th>
-                                <th onClick={() => requestSort('description_EN')}>{t.descriptionEn}</th>
-                                <th onClick={() => requestSort('classification')}>{t.classification}</th>
-                                <th onClick={() => requestSort('saudis_percentage')}>{t.saudisPercentage}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {currentItems.map(activity => (
-                                <tr key={activity.activityId}>
-                                    <td className="checkbox-cell">
+                    <div className="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th className="checkbox-cell">
                                         <input
                                             type="checkbox"
-                                            checked={selectedIdsSet.has(activity.activityId)}
-                                            onChange={() => handleSelect(activity.activityId)}
+                                            onChange={handleSelectAll}
+                                            checked={selectedIdsArray.length === filteredActivities.length && filteredActivities.length > 0}
                                         />
-                                    </td>
-                                    <td data-label={t.activityId}>{activity.activityId}</td>
-                                    <td data-label={t.descriptionAr}>{activity.description}</td>
-                                    <td data-label={t.descriptionEn} style={{ direction: 'ltr', textAlign: isRtl ? 'right' : 'left' }}>{activity.description_EN || '-'}</td>
-                                    <td data-label={t.classification}>
-                                        <span className={`badge ${activity.classification === 'Allowed' ? 'badge-allowed' : 'badge-restricted'}`}>
-                                            {activity.classification}
-                                        </span>
-                                    </td>
-                                    <td data-label={t.saudisPercentage}>{activity.saudis_percentage}</td>
+                                    </th>
+                                    <th onClick={() => requestSort('activityId')}>
+                                        {t.activityId}
+                                        {sortConfig.key === 'activityId' ? (sortConfig.direction === 'asc' ? <ChevronUp size={14} /> : <ChevronDown size={14} />) : <ArrowUpDown size={14} />}
+                                    </th>
+                                    <th onClick={() => requestSort('description')}>{t.descriptionAr}</th>
+                                    <th onClick={() => requestSort('description_EN')}>{t.descriptionEn}</th>
+                                    <th onClick={() => requestSort('classification')}>{t.classification}</th>
+                                    <th onClick={() => requestSort('saudis_percentage')}>{t.saudisPercentage}</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {currentItems.map(activity => (
+                                    <tr key={activity.activityId}>
+                                        <td className="checkbox-cell">
+                                            <input
+                                                type="checkbox"
+                                                checked={selectedIdsSet.has(activity.activityId)}
+                                                onChange={() => handleSelect(activity.activityId)}
+                                            />
+                                        </td>
+                                        <td data-label={t.activityId}>{activity.activityId}</td>
+                                        <td data-label={t.descriptionAr}>{activity.description}</td>
+                                        <td data-label={t.descriptionEn} style={{ direction: 'ltr', textAlign: isRtl ? 'right' : 'left' }}>{activity.description_EN || '-'}</td>
+                                        <td data-label={t.classification}>
+                                            <span className={`badge ${activity.classification === 'Allowed' ? 'badge-allowed' : 'badge-restricted'}`}>
+                                                {activity.classification}
+                                            </span>
+                                        </td>
+                                        <td data-label={t.saudisPercentage}>{activity.saudis_percentage}</td>
+                                    </tr>
+                                ))}
+                                {
+                                    currentItems.length === 0 && (
+                                        <tr>
+                                            <td colSpan="6" style={{ textAlign: 'center', padding: '2rem' }}>No activities found</td>
+                                        </tr>
+                                    )
+                                }
+                            </tbody>
+                        </table>
+                    </div>
 
                     <div className="pagination" style={{ marginTop: '1.5rem', borderTop: '1px solid var(--border)', paddingTop: '1.5rem', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}>
                         <button
