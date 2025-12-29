@@ -65,7 +65,7 @@ function App() {
 
     const t = translations[language] || translations.en;
     const isRtl = language === 'ar';
-    const fil = "/public/uploads/151_new_29_dec_custom.json";
+    const fil = "/uploads/151_new_29_dec_custom.json";
     // For optimized checks, we can create a Set locally from the Redux array
     const selectedIdsSet = useMemo(() => new Set(selectedIdsArray), [selectedIdsArray]);
 
