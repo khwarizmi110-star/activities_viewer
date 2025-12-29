@@ -70,6 +70,7 @@ function App() {
     const selectedIdsSet = useMemo(() => new Set(selectedIdsArray), [selectedIdsArray]);
 
     useEffect(() => {
+        console.log("dir : ",__direname);
         fetch('./activities_viewer/uploads/151_new_29_dec_custom.json')
             .then(res => res.json())
             .then(data => {
