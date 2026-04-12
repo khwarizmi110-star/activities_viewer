@@ -212,9 +212,9 @@ function App() {
                             {t.langToggle}
                         </button>
                     </div>
-                    <div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-                        <img style={{ maxWidth: '400px', height: 'auto' }} src="/assets/logo.png" alt="logo" />
-                    </div>
+//                    <div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+//                        <img style={{ maxWidth: '400px', height: 'auto' }} src="/assets/logo.png" alt="logo" />
+//                    </div>
                 </header>
 
                 <h1 style={{ textAlign: 'center', marginTop: '1rem', fontFamily: isRtl ? 'IBM Plex Sans Arabic' : 'inherit', marginBottom: '1rem', fontSize: 'clamp(1.5rem, 5vw, 2.5rem)' }}>
