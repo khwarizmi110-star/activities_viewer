@@ -118,10 +118,10 @@ function App() {
     const filteredActivities = useMemo(() => {
         let result = activities.filter(activity =>
             activity.activityId.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            activity.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            (activity.description_EN && activity.description_EN.toLowerCase().includes(searchTerm.toLowerCase())) ||
-            activity.classification.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            activity.saudis_percentage.toLowerCase().includes(searchTerm.toLowerCase())
+            activity.product_description_ar.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (activity.product_description_en && activity.product_description_en.toLowerCase().includes(searchTerm.toLowerCase())) ||
+            activity?.classification?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            activity?.saudis_percentage?.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
         if (sortConfig.key) {
@@ -259,9 +259,8 @@ function App() {
                                         {t.activityId}
                                         {sortConfig.key === 'activityId' ? (sortConfig.direction === 'asc' ? <ChevronUp size={14} /> : <ChevronDown size={14} />) : <ArrowUpDown size={14} />}
                                     </th>
-                                    <th onClick={() => requestSort('description')}>{t.descriptionAr}</th>
-                                    <th onClick={() => requestSort('description_EN')}>{t.descriptionEn}</th>
-                                    <th onClick={() => requestSort('classification')}>{t.classification}</th>
+                                    <th onClick={() => requestSort('product_description_ar')}>{t.descriptionAr}</th>
+                                    <th onClick={() => requestSort('product_description_en')}>{t.descriptionEn}</th>
                                     <th onClick={() => requestSort('saudis_percentage')}>{t.saudisPercentage}</th>
                                 </tr>
                             </thead>
@@ -276,13 +275,8 @@ function App() {
                                             />
                                         </td>
                                         <td data-label={t.activityId}>{activity.activityId}</td>
-                                        <td data-label={t.descriptionAr}>{activity.description}</td>
-                                        <td data-label={t.descriptionEn} style={{ direction: 'ltr', textAlign: isRtl ? 'right' : 'left' }}>{activity.description_EN || '-'}</td>
-                                        <td data-label={t.classification}>
-                                            <span className={`badge ${activity.classification === 'Allowed' ? 'badge-allowed' : 'badge-restricted'}`}>
-                                                {activity.classification}
-                                            </span>
-                                        </td>
+                                        <td data-label={t.descriptionAr}>{activity.product_description_ar}</td>
+                                        <td data-label={t.descriptionEn} style={{ direction: 'ltr', textAlign: isRtl ? 'right' : 'left' }}>{activity.product_description_en || '-'}</td>
                                         <td data-label={t.saudisPercentage}>{activity.saudis_percentage}</td>
                                     </tr>
                                 ))}
