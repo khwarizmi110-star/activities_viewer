@@ -363,7 +363,6 @@ function App() {
                             <th style={{ width: '15%' }}>{t.activityId}</th>
                             <th style={{ width: '35%' }}>{t.descriptionAr}</th>
                             <th style={{ width: '30%' }}>{t.descriptionEn}</th>
-                            <th style={{ width: '10%' }}>{t.classification}</th>
                             <th style={{ width: '10%' }}>{t.saudisPercentage}</th>
                         </tr>
                     </thead>
@@ -371,9 +370,8 @@ function App() {
                         {selectedActivities.map(activity => (
                             <tr key={activity.activityId}>
                                 <td className="font-mono">{activity.activityId}</td>
-                                <td className="ar-text">{activity.description}</td>
-                                <td className="en-text">{activity.description_EN || '-'}</td>
-                                <td>{activity.classification}</td>
+                                <td className="ar-text">{activity.product_description_ar}</td>
+                                <td className="en-text" style={{ direction: 'ltr', textAlign: isRtl ? 'right' : 'left' }}>{activity.product_description_en || '-'}</td>
                                 <td>{activity.saudis_percentage}</td>
                             </tr>
                         ))}
