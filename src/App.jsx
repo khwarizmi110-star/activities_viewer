@@ -76,9 +76,8 @@ function App() {
             .then(data => {
                 const mappedData = data.map(item => ({
                     activityId: item.activityid,
-                    description: item.product_description_ar,
-                    description_EN: item.product_description_en,
-                    classification: item?.isicMasterRule?.classification || 'N/A',
+                    product_description_ar: item.product_description_ar,
+                    product_description_en: item.product_description_en,
                     saudis_percentage: item.saudis_percentage
                 }));
                 setActivities(mappedData);
@@ -120,7 +119,6 @@ function App() {
             activity.activityId.toLowerCase().includes(searchTerm.toLowerCase()) ||
             activity.product_description_ar.toLowerCase().includes(searchTerm.toLowerCase()) ||
             (activity.product_description_en && activity.product_description_en.toLowerCase().includes(searchTerm.toLowerCase())) ||
-            activity?.classification?.toLowerCase().includes(searchTerm.toLowerCase()) ||
             activity?.saudis_percentage?.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
@@ -259,9 +257,9 @@ function App() {
                                         {t.activityId}
                                         {sortConfig.key === 'activityId' ? (sortConfig.direction === 'asc' ? <ChevronUp size={14} /> : <ChevronDown size={14} />) : <ArrowUpDown size={14} />}
                                     </th>
-                                    <th onClick={() => requestSort('product_description_ar')}>{t.descriptionAr}</th>
-                                    <th onClick={() => requestSort('product_description_en')}>{t.descriptionEn}</th>
-                                    <th onClick={() => requestSort('saudis_percentage')}>{t.saudisPercentage}</th>
+                                    <th onClick={() => requestSort('product_description_ar')}>{t.product_description_ar}</th>
+                                    <th onClick={() => requestSort('product_description_en')}>{t.product_description_en}</th>
+                                    <th onClick={() => requestSort('saudis_percentage')}>{t.saudis_percentage}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -275,9 +273,9 @@ function App() {
                                             />
                                         </td>
                                         <td data-label={t.activityId}>{activity.activityId}</td>
-                                        <td data-label={t.descriptionAr}>{activity.product_description_ar}</td>
-                                        <td data-label={t.descriptionEn} style={{ direction: 'ltr', textAlign: isRtl ? 'right' : 'left' }}>{activity.product_description_en || '-'}</td>
-                                        <td data-label={t.saudisPercentage}>{activity.saudis_percentage}</td>
+                                        <td data-label={t.product_description_ar}>{activity.product_description_ar}</td>
+                                        <td data-label={t.product_description_en} style={{ direction: 'ltr', textAlign: isRtl ? 'right' : 'left' }}>{activity.product_description_en || '-'}</td>
+                                        <td data-label={t.saudis_percentage}>{activity.saudis_percentage}</td>
                                     </tr>
                                 ))}
                                 {
@@ -361,16 +359,16 @@ function App() {
                     <thead>
                         <tr>
                             <th style={{ width: '15%' }}>{t.activityId}</th>
-                            <th style={{ width: '35%' }}>{t.descriptionAr}</th>
-                            <th style={{ width: '30%' }}>{t.descriptionEn}</th>
-                            <th style={{ width: '10%' }}>{t.saudisPercentage}</th>
+                            <th style={{ width: '35%' }}>{t.product_description_ar}</th>
+                            <th style={{ width: '30%' }}>{t.product_description_en}</th>
+                            <th style={{ width: '10%' }}>{t.saudis_percentage}</th>
                         </tr>
                     </thead>
                     <tbody>
                         {selectedActivities.map(activity => (
                             <tr key={activity.activityId}>
                                 <td className="font-mono">{activity.activityId}</td>
-                                <td className="ar-text">{activity.product_description_ar}</td>
+                                <td className="ar-text" style={{ direction: 'ltr', textAlign: isRtl ? 'right' : 'left' }}>{activity.product_description_ar}</td>
                                 <td className="en-text" style={{ direction: 'ltr', textAlign: isRtl ? 'right' : 'left' }}>{activity.product_description_en || '-'}</td>
                                 <td>{activity.saudis_percentage}</td>
                             </tr>
