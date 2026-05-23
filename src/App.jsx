@@ -75,10 +75,10 @@ function App() {
             .then(res => res.json())
             .then(data => {
                 const mappedData = data.map(item => ({
-                    activityId: item.activityId,
+                    activityId: item.activityid,
                     description: item.product_description_ar,
                     description_EN: item.product_description_en,
-                    classification: item.isicMasterRule?.classification || 'N/A',
+                    classification: item?.isicMasterRule?.classification || 'N/A',
                     saudis_percentage: item.saudis_percentage
                 }));
                 setActivities(mappedData);
