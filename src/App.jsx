@@ -76,8 +76,8 @@ function App() {
             .then(data => {
                 const mappedData = data.map(item => ({
                     activityId: item.activityId,
-                    description: item.description,
-                    description_EN: item.description_EN,
+                    description: item.product_description_ar,
+                    description_EN: item.product_description_en,
                     classification: item.isicMasterRule?.classification || 'N/A',
                     saudis_percentage: item.saudis_percentage
                 }));
