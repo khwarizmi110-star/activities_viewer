@@ -19,7 +19,7 @@ export const useActivities = () => {
         classification: true,
         sectorClassification: true,
         saudisPercentage: true,
-        document_type_description_new_ar: true,
+        document_to_be_added: true,
         obligationAr: false
     });
 

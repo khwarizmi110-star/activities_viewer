@@ -31,10 +31,11 @@ export const translations = {
         noSelectionErrorExport: 'Please select at least one activity to export',
         itemsPerPage: 'Items per page',
         all: 'All',
-        obligationAr: 'Obligation (Ar)'
+        obligationAr: 'Obligation (Ar)',
+        "document_to_be_added": "Documents Required Before MISA"
     },
     ar: {
-        title: 'مستعرض الأنشطة',
+        title: 'بيانات الأنشطة',
         reportTitle: 'تقرير الأنشطة المحددة',
         activitySelectionReport: 'Activity selection report',
         searchPlaceholder: 'بحث في جميع الحقول...',
@@ -65,6 +66,7 @@ export const translations = {
         noSelectionErrorExport: 'يرجى تحديد نشاط واحد على الأقل للتصدير',
         itemsPerPage: 'عدد العناصر بالصفحة',
         all: 'الكل',
-        obligationAr: 'الالتزام (عربي)'
+        obligationAr: 'الالتزام (عربي)',
+        document_to_be_added: "مستندات مطلوبة"
     }
 };

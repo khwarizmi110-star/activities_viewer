@@ -26,7 +26,7 @@ const ActivityTable = ({
 
     return (
         <div className="glass-panel overflow-hidden mb-6 z-10 relative">
-            <div className="overflow-x-auto max-h-[75vh] custom-scrollbar p-2 lg:p-0">
+            <div className="overflow-x-auto max-h-[75vh] custom-scrollbar p-2 lg:p-0" >
                 <table className={`w-full border-collapse ${isRtl ? 'text-right' : 'text-left'}`}>
                     <thead className="hidden lg:table-header-group bg-slate-50/90 backdrop-blur-md sticky top-0 z-10 border-b border-slate-200">
                         <tr>
@@ -87,13 +87,13 @@ const ActivityTable = ({
                                     </div>
                                 </th>
                             )}
-                            {/* {visibleColumns.document_to_be_added && (
+                            {visibleColumns.document_to_be_added && (
                                 <th onClick={() => requestSort('document_to_be_added')} className="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider cursor-pointer hover:bg-slate-100 transition-colors">
                                     <div className="flex items-center gap-2">
-                                        {t.document_to_be_added[0]} {renderSortIcon('document_to_be_added')}
+                                        {t.document_to_be_added} {renderSortIcon('document_to_be_added')}
                                     </div>
                                 </th>
-                            )} */}
+                            )}
                         </tr>
                     </thead>
                     <tbody className="block lg:table-row-group divide-y-0 lg:divide-y lg:divide-slate-100">
@@ -118,7 +118,9 @@ const ActivityTable = ({
                         </tr>
 
                         {currentItems.map((activity, index) => (
-                            <tr key={activity.activityId} className="group block lg:table-row bg-white lg:bg-transparent rounded-2xl lg:rounded-none shadow-sm border border-slate-100 lg:border-none lg:shadow-none mb-4 lg:mb-0 p-4 lg:p-0 hover:bg-slate-50 lg:hover:bg-white/90 lg:hover:scale-[1.002] transition-all duration-200">
+                            <tr key={activity.activityId} className="group block lg:table-row bg-white lg:bg-transparent rounded-2xl lg:rounded-none shadow-sm border border-slate-100 lg:border-none hover:border-blue-500 lg:shadow-none mb-4 lg:mb-0 p-4 lg:p-0 hover:bg-slate-50 lg:hover:bg-white/90 lg:hover:scale-[1.002] transition-all duration-200"
+
+                            >
                                 <td className="flex lg:table-cell items-center justify-between lg:justify-center border-b border-slate-100 lg:border-none pb-4 lg:pb-0 mb-4 lg:mb-0 lg:p-4">
                                     <span className="lg:hidden text-xs font-bold text-slate-400">تحديد</span>
                                     <div className="relative flex items-center">
@@ -168,8 +170,8 @@ const ActivityTable = ({
                                 )}
                                 {visibleColumns.sectorClassification && (
                                     <td className="flex lg:table-cell items-center justify-between lg:justify-start lg:p-4 mb-3 lg:mb-0">
-                                        <span className="lg:hidden text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t.sectorClassification}</span>
-                                        <span className="inline-flex items-center px-3 py-1 lg:px-2.5 lg:py-0.5 rounded-lg lg:rounded-md text-xs font-bold lg:font-medium bg-indigo-50 text-indigo-700 border border-indigo-100 shadow-sm lg:shadow-none">
+                                        <span className="lg:hidden text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t.sectorClassification}  </span>
+                                        <span className="inline-flex items-center px-3 py-1 lg:px-2.5 lg:py-0.5 rounded-lg lg:rounded-md text-xs font-bold lg:font-medium bg-indigo-50 text-red-700 border border-indigo-100 shadow-sm lg:shadow-none">
                                             {activity.sector_classification || '-'}
                                         </span>
                                     </td>
@@ -178,7 +180,7 @@ const ActivityTable = ({
                                     <td className="flex lg:table-cell flex-col lg:flex-row items-stretch lg:items-center justify-between lg:justify-start lg:p-4 pt-2 lg:pt-4 border-t border-slate-100 lg:border-none mt-2 lg:mt-0 gap-2 lg:gap-0 lg:min-w-[120px]">
                                         <div className="flex items-center justify-between lg:hidden mb-1">
                                             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t.saudisPercentage}</span>
-                                            <span className="text-sm font-black text-slate-800">{activity.saudis_percentage || "-"}</span>
+                                            <span className="text-sm font-black text-slate-800">{activity.saudis_percentage || "-"} % </span>
                                         </div>
                                         <div className="flex items-center gap-3 w-full">
                                             <div className="h-2.5 lg:h-1.5 w-full bg-slate-100 rounded-full overflow-hidden shadow-inner">
@@ -193,16 +195,17 @@ const ActivityTable = ({
                                         </div>
                                     </td>
                                 )}
-                                {/* {visibleColumns.document_type_description_new_ar && (
-                                    <td className="flex lg:table-cell items-center justify-between lg:justify-start lg:p-4 mb-3 lg:mb-0">
-                                        <span className="lg:hidden text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t.obligation_ar}00000</span>
-                                        <span className="inline-flex items-center px-3 py-1 lg:px-2.5 lg:py-0.5 rounded-lg lg:rounded-md text-xs font-bold lg:font-medium bg-indigo-50 text-indigo-700 border border-indigo-100 shadow-sm lg:shadow-none">
+                                {visibleColumns.document_to_be_added && (
+                                    <td className="flex lg:table-cell items-center justify-between lg:justify-start lg:p-4 mb-3 mt-6 lg:mb-0">
+
+                                        <span className="lg:hidden text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t.document_to_be_added}</span>
+                                        <span className="inline-flex items-center px-3 py-1 lg:px-2.5 lg:py-0.5 rounded-lg lg:rounded-md text-xs font-bold lg:font-medium bg-indigo-50 text-red-700 border border-indigo-100 shadow-sm lg:shadow-none">
                                             {activity?.document_to_be_added[0].document_type_description_new_ar
                                                 || '-'}
 
                                         </span>
                                     </td>
-                                )} */}
+                                )}
 
                             </tr>
                         ))}
