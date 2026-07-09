@@ -5,7 +5,10 @@ export const fetchActivities = async () => {
             throw new Error('Failed to fetch data');
         }
         const data = await response.json();
-        return data.map(item => ({
+
+        // console.log('Total items:', data.length);
+        // console.log('Items with missedSBC:', count);
+        return data.filter(item => !item.missedSBC).map(item => ({
             activityId: item.product_label,
             class_id: item.class_id,
             classification_text: item.classification_text,

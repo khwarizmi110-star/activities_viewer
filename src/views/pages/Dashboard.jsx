@@ -63,13 +63,13 @@ const Dashboard = () => {
 
                     <div className="glass-panel overflow-hidden mb-6 z-10 relative p-2 lg:p-0">
                         <div className="flex flex-col m-6">
-                            <p className='text-red-500 font-bold text-center text-lg sm:text-xl'>
+                            <div className='text-red-500 font-bold text-center text-lg sm:text-xl'>
                                 <p> تنبيه ⚠️:</p> <br />
                                 هذه الصفحة للاطلاع فقط   وتوجيه المستثمر لمعرفة الانشطة التي يريد العمل بها
 
                                 <br /> وغير مسؤولين عن اي خطأ في هذه البيانات
 
-                            </p>
+                            </div>
 
                         </div>
                     </div>
