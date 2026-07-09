@@ -47,7 +47,7 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="app-container" dir={isRtl ? 'rtl' : 'ltr'}>
+        <div className="app-container m-4 mb-10" dir={isRtl ? 'rtl' : 'ltr'}>
             <Toaster position="top-center" reverseOrder={false} toastOptions={{ duration: 3000 }} />
 
             <div className="no-print max-w-7xl mx-auto">
