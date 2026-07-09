@@ -1,8 +1,8 @@
 export const translations = {
     en: {
         title: 'Activity Viewer',
-        reportTitle: 'Selected Activities Report',
-        activitySelectionReport: 'Activity selection report',
+        reportTitle: 'Selected Activities ',
+        activitySelectionReport: 'Activity selection ',
         searchPlaceholder: 'Search in all fields...',
         printButton: 'Print Selected',
         prevButton: 'Previous',
@@ -36,8 +36,8 @@ export const translations = {
     },
     ar: {
         title: 'بيانات الأنشطة',
-        reportTitle: 'تقرير الأنشطة المحددة',
-        activitySelectionReport: 'Activity selection report',
+        reportTitle: ' الأنشطة المحددة',
+        activitySelectionReport: 'Activity selection ',
         searchPlaceholder: 'بحث في جميع الحقول...',
         printButton: 'طباعة المحدد',
         prevButton: 'السابق',

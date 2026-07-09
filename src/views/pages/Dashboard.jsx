@@ -49,18 +49,33 @@ const Dashboard = () => {
     return (
         <div className="app-container" dir={isRtl ? 'rtl' : 'ltr'}>
             <Toaster position="top-center" reverseOrder={false} toastOptions={{ duration: 3000 }} />
-            
+
             <div className="no-print max-w-7xl mx-auto">
+
                 <div className="flex flex-col">
-                    <Header 
-                        toggleLang={toggleLang} 
-                        langToggleText={t.langToggle} 
-                        title={t.title} 
+                    <Header
+                        toggleLang={toggleLang}
+                        langToggleText={t.langToggle}
+                        title={t.title}
                         isRtl={isRtl}
                     />
+                    {/*  تكون اكثر احترافي و و و تكون رسالة تحذير و اخلاء مسؤولية عن محتوي الصفحة */}
 
-                    <SearchBar 
-                        searchTerm={searchTerm} 
+                    <div className="glass-panel overflow-hidden mb-6 z-10 relative p-2 lg:p-0">
+                        <div className="flex flex-col m-6">
+                            <p className='text-red-500 font-bold text-center text-lg sm:text-xl'>
+                                <p> تنبيه ⚠️:</p> <br />
+                                هذه الصفحة للاطلاع فقط   وتوجيه المستثمر لمعرفة الانشطة التي يريد العمل بها
+
+                                <br /> وغير مسؤولين عن اي خطأ في هذه البيانات
+
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <SearchBar
+                        searchTerm={searchTerm}
                         setSearchTerm={setSearchTerm}
                         searchPlaceholder={t.searchPlaceholder}
                         selectedCount={selectedActivityIds.length}
@@ -72,7 +87,7 @@ const Dashboard = () => {
                         t={t}
                     />
 
-                    <ActivityTable 
+                    <ActivityTable
                         currentItems={currentItems}
                         filteredActivities={filteredActivities}
                         selectedIdsSet={selectedIdsSet}
@@ -86,7 +101,7 @@ const Dashboard = () => {
                         visibleColumns={visibleColumns}
                     />
 
-                    <Pagination 
+                    <Pagination
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}
                         totalPages={totalPages}
@@ -100,7 +115,7 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            <PrintView 
+            <PrintView
                 selectedActivities={selectedActivities}
                 selectedIdsArray={selectedActivityIds}
                 t={t}

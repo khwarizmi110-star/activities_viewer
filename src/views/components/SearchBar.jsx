@@ -71,8 +71,8 @@ const SearchBar = ({
             if (visibleColumns.activityId) row[t.activityId] = activity.activityId;
             if (visibleColumns.descriptionAr) row[t.descriptionAr] = activity.product_description_ar;
             if (visibleColumns.descriptionEn) row[t.descriptionEn] = activity.product_description_en;
-            if (visibleColumns.classification) row[t.classification] = activity.classification_text;
-            if (visibleColumns.sectorClassification) row[t.sectorClassification] = activity.sector_classification;
+            // if (visibleColumns.classification) row[t.classification] = activity.classification_text;
+            // if (visibleColumns.sectorClassification) row[t.sectorClassification] = activity.sector_classification;
             if (visibleColumns.saudisPercentage) row[t.saudisPercentage] = `${activity.saudis_percentage}%`;
             return row;
         });
@@ -93,8 +93,8 @@ const SearchBar = ({
         { key: 'activityId', label: t.activityId },
         { key: 'descriptionAr', label: t.descriptionAr },
         { key: 'descriptionEn', label: t.descriptionEn },
-        { key: 'classification', label: t.classification },
-        { key: 'sectorClassification', label: t.sectorClassification },
+        // { key: 'classification', label: t.classification },
+        // { key: 'sectorClassification', label: t.sectorClassification },
         { key: 'saudisPercentage', label: t.saudisPercentage }
     ];
 

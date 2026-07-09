@@ -118,8 +118,14 @@ const ActivityTable = ({
                         </tr>
 
                         {currentItems.map((activity, index) => (
-                            <tr key={activity.activityId} className="group block lg:table-row bg-white lg:bg-transparent rounded-2xl lg:rounded-none shadow-sm border border-slate-100 lg:border-none hover:border-blue-500 lg:shadow-none mb-4 lg:mb-0 p-4 lg:p-0 hover:bg-slate-50 lg:hover:bg-white/90 lg:hover:scale-[1.002] transition-all duration-200"
-
+                            <tr 
+                                key={activity.activityId} 
+                                onClick={() => handleSelect(activity.activityId)}
+                                className={`group block lg:table-row rounded-2xl lg:rounded-none mb-4 lg:mb-0 p-4 lg:p-0 transition-all duration-200 cursor-pointer relative ${
+                                    selectedIdsSet.has(activity.activityId) 
+                                        ? 'bg-indigo-50/40 border-2 border-indigo-500 lg:border-none lg:outline lg:outline-2 lg:outline-indigo-500 lg:-outline-offset-2 z-10 shadow-md lg:shadow-none' 
+                                        : 'bg-white lg:bg-transparent border border-slate-100 lg:border-none shadow-sm lg:shadow-none hover:bg-slate-50 lg:hover:bg-white/90 hover:border-indigo-300 hover:shadow-md lg:hover:shadow-none z-0'
+                                }`}
                             >
                                 <td className="flex lg:table-cell items-center justify-between lg:justify-center border-b border-slate-100 lg:border-none pb-4 lg:pb-0 mb-4 lg:mb-0 lg:p-4">
                                     <span className="lg:hidden text-xs font-bold text-slate-400">تحديد</span>
@@ -127,7 +133,7 @@ const ActivityTable = ({
                                         <input
                                             type="checkbox"
                                             checked={selectedIdsSet.has(activity.activityId)}
-                                            onChange={() => handleSelect(activity.activityId)}
+                                            readOnly
                                             className="peer appearance-none w-6 h-6 lg:w-5 lg:h-5 border-2 border-slate-300 rounded-md lg:rounded focus:ring-indigo-500 checked:bg-indigo-600 checked:border-indigo-600 transition-all cursor-pointer bg-slate-50 lg:bg-white shadow-sm"
                                         />
                                         <svg className="absolute w-4 h-4 lg:w-3.5 lg:h-3.5 text-white left-[4px] lg:left-[3px] top-[4px] lg:top-[3px] opacity-0 peer-checked:opacity-100 pointer-events-none" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
