@@ -8,6 +8,9 @@ import SearchBar from '../components/SearchBar';
 import ActivityTable from '../components/ActivityTable';
 import Pagination from '../components/Pagination';
 import PrintView from '../components/PrintView';
+import { QiwaActivityDialog } from '../components/QiwaActivityDialog';
+import { useDialog } from '../../controllers/useDialog.js'
+import DialogCompnent from '../components/DialogCompnent.jsx';
 
 const Dashboard = () => {
     const {
@@ -32,8 +35,13 @@ const Dashboard = () => {
         visibleColumns,
         toggleColumn,
         itemsPerPage,
-        setItemsPerPage
+        setItemsPerPage,
+        expectedQiwaActivity,
+        exportExcel
+
     } = useActivities();
+
+    const { isOpen, handleOpen, handleClose } = useDialog();
 
     const t = translations[language] || translations.en;
 
@@ -74,6 +82,7 @@ const Dashboard = () => {
                         </div>
                     </div>
 
+
                     <SearchBar
                         searchTerm={searchTerm}
                         setSearchTerm={setSearchTerm}
@@ -85,7 +94,29 @@ const Dashboard = () => {
                         visibleColumns={visibleColumns}
                         toggleColumn={toggleColumn}
                         t={t}
+                        handleOpen={handleOpen}
                     />
+                    {/* 
+                    {expectedQiwaActivity && <div className="glass-panel overflow-hidden mb-6 z-10 relative p-2 lg:p-0">
+                        <div className="flex flex-col m-6">
+                            <h1> Expected Qiwa Activty : {JSON.stringify(expectedQiwaActivity?.activityId)}</h1>
+
+                        </div>
+                    </div>
+                    } */}
+                    {/* <div>
+                        <button className="glass-panel w-full max-w-md" onClick={() => handleOpen()}>Open Dialog</button>
+                    </div> */}
+
+                    <DialogCompnent
+                        isOpen={isOpen}
+                        handleClose={handleClose}
+                        title={t.reportTitle}
+                        exportExcel={() => exportExcel(t)}
+                    >
+                        <QiwaActivityDialog activities={selectedActivities} />
+
+                    </DialogCompnent>
 
                     <ActivityTable
                         currentItems={currentItems}

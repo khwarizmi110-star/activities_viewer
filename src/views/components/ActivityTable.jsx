@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUpDown, ChevronDown, ChevronUp, Search } from 'lucide-react';
+import { activityRangeColor } from '../../utils/activityUtils';
 
 const ActivityTable = ({
     currentItems,
@@ -118,14 +119,13 @@ const ActivityTable = ({
                         </tr>
 
                         {currentItems.map((activity, index) => (
-                            <tr 
-                                key={activity.activityId} 
+                            <tr
+                                key={activity.activityId}
                                 onClick={() => handleSelect(activity.activityId)}
-                                className={`group block lg:table-row rounded-2xl lg:rounded-none mb-4 lg:mb-0 p-4 lg:p-0 transition-all duration-200 cursor-pointer relative ${
-                                    selectedIdsSet.has(activity.activityId) 
-                                        ? 'bg-indigo-50/40 border-2 border-indigo-500 lg:border-none lg:outline lg:outline-2 lg:outline-indigo-500 lg:-outline-offset-2 z-10 shadow-md lg:shadow-none' 
-                                        : 'bg-white lg:bg-transparent border border-slate-100 lg:border-none shadow-sm lg:shadow-none hover:bg-slate-50 lg:hover:bg-white/90 hover:border-indigo-300 hover:shadow-md lg:hover:shadow-none z-0'
-                                }`}
+                                className={`group block lg:table-row rounded-2xl lg:rounded-none mb-4 lg:mb-0 p-4 lg:p-0 transition-all duration-200 cursor-pointer relative ${selectedIdsSet.has(activity.activityId)
+                                    ? 'bg-indigo-50/40 border-2 border-indigo-500 lg:border-none lg:outline lg:outline-2 lg:outline-indigo-500 lg:-outline-offset-2 z-10 shadow-md lg:shadow-none'
+                                    : 'bg-white lg:bg-transparent border border-slate-100 lg:border-none shadow-sm lg:shadow-none hover:bg-slate-50 lg:hover:bg-white/90 hover:border-indigo-300 hover:shadow-md lg:hover:shadow-none z-0'
+                                    }`}
                             >
                                 <td className="flex lg:table-cell items-center justify-between lg:justify-center border-b border-slate-100 lg:border-none pb-4 lg:pb-0 mb-4 lg:mb-0 lg:p-4">
                                     <span className="lg:hidden text-xs font-bold text-slate-400">تحديد</span>
@@ -191,7 +191,8 @@ const ActivityTable = ({
                                         <div className="flex items-center gap-3 w-full">
                                             <div className="h-2.5 lg:h-1.5 w-full bg-slate-100 rounded-full overflow-hidden shadow-inner">
                                                 <div
-                                                    className="h-full bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-full transition-all duration-1000"
+                                                    className={`h-full bg-gradient-to-r ${() => (activityRangeColor(activity.saudis_percentage))} ${activityRangeColor(activity.saudis_percentage)} rounded-full transition-all duration-1000`}
+                                                    // className={`h-full bg-gradient-to-r from-${activityRangeColor(activity.saudis_percentage)} to-${activityRangeColor(activity.saudis_percentage)} rounded-full transition-all duration-1000`}
                                                     style={{ width: `${Math.min(activity.saudis_percentage || 0, 100)}%` }}
                                                 ></div>
                                             </div>

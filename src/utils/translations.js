@@ -1,5 +1,6 @@
 export const translations = {
     en: {
+        expectedActivity: "Expected Qiwa Activity : ",
         title: 'Activity Viewer',
         reportTitle: 'Selected Activities ',
         activitySelectionReport: 'Activity selection ',
@@ -35,6 +36,7 @@ export const translations = {
         "document_to_be_added": "Documents Required Before MISA"
     },
     ar: {
+        expectedActivity: "نشاط مكتب العمل المتوقع هو :",
         title: 'بيانات الأنشطة',
         reportTitle: ' الأنشطة المحددة',
         activitySelectionReport: 'Activity selection ',

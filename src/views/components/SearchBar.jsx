@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Search, Printer, Columns, Download, FileSpreadsheet, ChevronDown } from 'lucide-react';
 import toast from 'react-hot-toast';
 import * as XLSX from 'xlsx';
+// import { useDialog } from '../../controllers/useDialog';
 
 const SearchBar = ({
     searchTerm,
@@ -13,6 +14,7 @@ const SearchBar = ({
     noSelectionError,
     visibleColumns,
     toggleColumn,
+    handleOpen,
     t
 }) => {
     const [showColumnsMenu, setShowColumnsMenu] = useState(false);
@@ -20,6 +22,7 @@ const SearchBar = ({
 
     const exportMenuRef = useRef(null);
     const columnsMenuRef = useRef(null);
+    // const { handleOpen } = useDialog()
 
     // Close menus on outside click
     useEffect(() => {
@@ -151,8 +154,9 @@ const SearchBar = ({
                 <div className="relative w-full sm:w-auto" ref={exportMenuRef}>
                     <button
                         onClick={() => {
-                            setShowExportMenu(!showExportMenu);
-                            setShowColumnsMenu(false);
+                            // setShowExportMenu(!showExportMenu);
+                            // setShowColumnsMenu(false);
+                            handleOpen()
                         }}
                         className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-700 hover:to-indigo-600 text-white px-5 py-3 rounded-full shadow-[0_4px_14px_0_rgba(79,70,229,0.39)] hover:shadow-[0_6px_20px_rgba(79,70,229,0.4)] transition-all font-semibold"
                     >
@@ -161,8 +165,11 @@ const SearchBar = ({
                         <span className="bg-white/20 px-2.5 py-0.5 rounded-full text-sm mx-2">
                             {selectedCount}
                         </span>
+
                         <ChevronDown size={16} className={`transition-transform ${showExportMenu ? 'rotate-180' : ''}`} />
                     </button>
+
+
 
                     {showExportMenu && (
                         <div className={`absolute top-full mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden z-50 ${isRtl ? 'left-0' : 'right-0'}`}>
@@ -175,6 +182,7 @@ const SearchBar = ({
                                     <FileSpreadsheet size={16} />
                                     {t.excelOption || 'Export to Excel'}
                                 </button>
+
                             </div>
                         </div>
                     )}

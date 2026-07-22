@@ -2,6 +2,8 @@ import { useState, useEffect, useMemo } from 'react';
 import { fetchActivities } from '../models/activitiesApi';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleActivitySelection, setActivitySelection, clearActivitySelection, setLanguage } from '../store/selectionSlice';
+import { qiwaActivity } from '../utils/activityUtils';
+import * as XLSX from 'xlsx';
 
 export const useActivities = () => {
     const [activities, setActivities] = useState([]);
@@ -113,6 +115,36 @@ export const useActivities = () => {
         return activities.filter(a => selectedIdsSet.has(a.activityId));
     }, [activities, selectedIdsSet]);
 
+    const expectedQiwaActivity = useMemo(() => {
+        // console.log("selectedActivities", selectedActivities)
+        return qiwaActivity(selectedActivities)
+    }, [selectedActivities]);
+
+    const exportExcel = (t) => {
+        // Prepare data based on visible columns
+        const exportData = selectedActivities.map(activity => {
+            const row = {};
+            if (visibleColumns.activityId) row[t.activityId] = activity.activityId;
+            if (visibleColumns.descriptionAr) row[t.descriptionAr] = activity.product_description_ar;
+            if (visibleColumns.descriptionEn) row[t.descriptionEn] = activity.product_description_en;
+            // if (visibleColumns.classification) row[t.classification] = activity.classification_text;
+            // if (visibleColumns.sectorClassification) row[t.sectorClassification] = activity.sector_classification;
+            if (visibleColumns.saudisPercentage) row[t.saudisPercentage] = `${activity.saudis_percentage}%`;
+            return row;
+        });
+
+        const worksheet = XLSX.utils.json_to_sheet(exportData);
+        // Add RTL support if needed by Excel (via sheet property)
+        if (isRtl) {
+            if (!worksheet['!views']) worksheet['!views'] = [];
+            worksheet['!views'].push({ rightToLeft: true });
+        }
+
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Activities");
+        XLSX.writeFile(workbook, "Selected_Activities.xlsx");
+    }
+
     return {
         activities,
         loading,
@@ -136,6 +168,8 @@ export const useActivities = () => {
         visibleColumns,
         toggleColumn,
         itemsPerPage,
-        setItemsPerPage
+        setItemsPerPage,
+        expectedQiwaActivity,
+        exportExcel
     };
 };
