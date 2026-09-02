@@ -8,7 +8,7 @@ export const fetchActivities = async () => {
 
         // console.log('Total items:', data.length);
         // console.log('Items with missedSBC:', count);
-        return data.filter(item => !item.missedSBC).map(item => ({
+        return data.filter(item => item.missedSBC !== true && item.isConsaltant !== true).map(item => ({
             activityId: item.product_label,
             class_id: item.class_id,
             classification_text: item.classification_text,

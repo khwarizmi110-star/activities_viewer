@@ -58,7 +58,7 @@ const Dashboard = () => {
         <div className="app-container m-4 mb-10" dir={isRtl ? 'rtl' : 'ltr'}>
             <Toaster position="top-center" reverseOrder={false} toastOptions={{ duration: 3000 }} />
 
-            <div className="no-print max-w-7xl mx-auto">
+            <div className="no-print max-w-7xl mx-auto pb-6">
 
                 <div className="flex flex-col">
                     <Header
@@ -67,20 +67,7 @@ const Dashboard = () => {
                         title={t.title}
                         isRtl={isRtl}
                     />
-                    {/*  تكون اكثر احترافي و و و تكون رسالة تحذير و اخلاء مسؤولية عن محتوي الصفحة */}
 
-                    <div className="glass-panel overflow-hidden mb-6 z-10 relative p-2 lg:p-0">
-                        <div className="flex flex-col m-6">
-                            <div className='text-red-500 font-bold text-center text-lg sm:text-xl'>
-                                <p> تنبيه ⚠️:</p> <br />
-                                هذه الصفحة للاطلاع فقط   وتوجيه المستثمر لمعرفة الانشطة التي يريد العمل بها
-
-                                <br /> وغير مسؤولين عن اي خطأ في هذه البيانات
-
-                            </div>
-
-                        </div>
-                    </div>
 
 
                     <SearchBar
@@ -144,6 +131,31 @@ const Dashboard = () => {
                         t={t}
                     />
                 </div>
+
+                {/*  تكون اكثر احترافي و و و تكون رسالة تحذير و اخلاء مسؤولية عن محتوي الصفحة */}
+
+                <div className="overflow-hidden mb-10 z-10 relative p-2 lg:p-0 mt-8 bg-red-50 border border-red-300 rounded-2xl border-l-8  border-l-red-400 ">
+                    <div className="flex flex-col m-6 gap-8 mt-4">
+                        <div className='text-red-500 font-bold text-center text-lg sm:text-xl'>
+                            <p> تنبيه ⚠️:</p> <br />
+                            هذه الصفحة للاطلاع فقط   وتوجيه المستثمر لمعرفة الانشطة التي يريد العمل بها
+
+                            <br /> وغير مسؤولين عن اي خطأ في هذه البيانات
+
+                        </div>
+
+                        <div className='text-red-500 font-bold text-center text-lg sm:text-xl '>
+                            <p> Alert ⚠️:</p> <br />
+                            This page is for viewing only to direct the investor to know the activities they want to work with
+
+                            <br /> and we are not responsible for any error in this data
+
+                        </div>
+
+
+                    </div>
+                </div>
+
             </div>
 
             <PrintView

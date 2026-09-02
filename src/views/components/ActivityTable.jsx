@@ -123,7 +123,7 @@ const ActivityTable = ({
                                 key={activity.activityId}
                                 onClick={() => handleSelect(activity.activityId)}
                                 className={`group block lg:table-row rounded-2xl lg:rounded-none mb-4 lg:mb-0 p-4 lg:p-0 transition-all duration-200 cursor-pointer relative ${selectedIdsSet.has(activity.activityId)
-                                    ? 'bg-indigo-50/40 border-2 border-indigo-500 lg:border-none lg:outline lg:outline-2 lg:outline-indigo-500 lg:-outline-offset-2 z-10 shadow-md lg:shadow-none'
+                                    ? 'bg-indigo-50/40 border-2 border-green-500 lg:border-none lg:outline lg:outline-2 lg:outline-green-500 lg:-outline-offset-2 z-10 shadow-md lg:shadow-none'
                                     : 'bg-white lg:bg-transparent border border-slate-100 lg:border-none shadow-sm lg:shadow-none hover:bg-slate-50 lg:hover:bg-white/90 hover:border-indigo-300 hover:shadow-md lg:hover:shadow-none z-0'
                                     }`}
                             >
@@ -170,7 +170,7 @@ const ActivityTable = ({
                                         <span className="lg:hidden text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t.classification}</span>
                                         <span className={`inline-flex items-center px-3 py-1 lg:px-2.5 lg:py-0.5 rounded-full text-xs font-bold lg:font-semibold shadow-sm lg:shadow-none ${activity.classification_text === 'Allowed' ? 'bg-emerald-100 text-emerald-800 border border-emerald-200 lg:border-none' : 'bg-rose-100 text-rose-800 border border-rose-200 lg:border-none'
                                             }`}>
-                                            {activity.classification_text || '-'}
+                                            {activity?.classification_text == "Allowed" ? "" : t.classification_text}
                                         </span>
                                     </td>
                                 )}
