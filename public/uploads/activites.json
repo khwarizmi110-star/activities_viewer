@@ -85164,7 +85164,7 @@
             "act_id": "781011"
         },
         "disable": false,
-        "missedSBC": false,
+        "missedSBC": true,
         "isConsaltant": false
     },
     {
